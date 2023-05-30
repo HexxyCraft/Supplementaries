@@ -10,6 +10,7 @@ import net.mehvahdjukaar.supplementaries.common.misc.mob_container.CapturedMobHa
 import net.mehvahdjukaar.supplementaries.common.misc.mob_container.MobContainer;
 import net.mehvahdjukaar.supplementaries.configs.ClientConfigs;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
+import net.mehvahdjukaar.supplementaries.reg.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -36,8 +37,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-
 import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -192,7 +193,7 @@ public abstract class AbstractMobContainerItem extends BlockItem {
                     success = true;
                     if (!world.isClientSide) {
                         //anger entity
-                        if (!player.isCreative() && entity instanceof NeutralMob ang) {
+                        if (!player.isCreative() && entity instanceof NeutralMob ang && !entity.getType().is(ModTags.NON_ANGERABLE)) {
                             ang.forgetCurrentTargetAndRefreshUniversalAnger();
                             ang.setPersistentAngerTarget(player.getUUID());
                             ang.setLastHurtByMob(player);
