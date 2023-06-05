@@ -1,5 +1,6 @@
 package net.mehvahdjukaar.supplementaries.common.items;
 
+import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.mehvahdjukaar.moonlight.api.platform.ForgeHelper;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
@@ -13,6 +14,7 @@ import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.reg.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.IntTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -209,6 +211,12 @@ public abstract class AbstractMobContainerItem extends BlockItem {
                             UUID id = nbt.getUUID("UUID");
                             entity.setUUID(id);
                         }
+
+                        // scuffed
+                        if (entity instanceof Villager villager && nbt.getBoolean("ShouldBeBrainswept")) {
+                            IXplatAbstractions.INSTANCE.brainsweep(villager);
+                        }
+
                         if (!world.addFreshEntity(entity)) {
                             //spawn failed, reverting to old UUID
                             entity.setUUID(temp);

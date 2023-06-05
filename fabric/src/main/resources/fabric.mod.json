@@ -41,7 +41,8 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.19.1",
-    "moonlight": ">=${required_moonlight_version}"
+    "moonlight": ">=${required_moonlight_version}",
+    "hexcasting": ">=0.10.3"
   },
   "suggests": {
     "sleep_tight": "*"

@@ -18,6 +18,7 @@ dependencies {
     //modCompileOnly("curse.maven:roughly-enough-items-310111:4357860")
     modCompileOnly("curse.maven:roughly-enough-items-310111:4401136")
     modCompileOnly("curse.maven:farmers-respite-551453:4081312")
+    modCompileOnly("curse.maven:hexcasting-569849:4132955")
 
     modImplementation ("net.mehvahdjukaar:moonlight:${rootProject.moonlight_version}")
 }

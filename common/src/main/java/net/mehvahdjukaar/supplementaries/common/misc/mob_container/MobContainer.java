@@ -1,5 +1,6 @@
 package net.mehvahdjukaar.supplementaries.common.misc.mob_container;
 
+import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import net.mehvahdjukaar.moonlight.api.fluids.SoftFluid;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
@@ -285,6 +286,12 @@ public class MobContainer {
 
         CompoundTag cmp = new CompoundTag();
         data.save(cmp, isAquarium);
+
+        // TODO: put this where it actually belongs
+        if (mob instanceof Villager villager && IXplatAbstractions.INSTANCE.isBrainswept(villager)) {
+            cmp.putBoolean("ShouldBeBrainswept", true);
+        }
+
         return cmp;
     }
 
