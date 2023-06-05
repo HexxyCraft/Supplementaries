@@ -313,7 +313,9 @@ public abstract class AbstractMobContainerItem extends BlockItem {
             if (player.level.isClientSide) return InteractionResult.SUCCESS;
 
             this.playCatchSound(player);
-            this.angerNearbyEntities(entity, player);
+            if (!entity.getType().is(ModTags.NON_ANGERABLE)) {
+                this.angerNearbyEntities(entity, player);
+            }
 
             if (CommonConfigs.Functional.CAGE_PERSISTENT_MOBS.get() && entity instanceof Mob mob) {
                 mob.setPersistenceRequired();
